@@ -1,0 +1,40 @@
+server:
+  port: 8000
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:9000/eureka/
+
+spring:
+  application:
+    name: book-service
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://www.ai-xu.top:6630/demo_cloud?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=UTC
+    username: aixu
+    password: Xu1876414429...
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher # Spring Boot 2.6.X以上使用的是PathPatternMatcher,需要修改
+  jpa:
+    open-in-view: false
+
+    #    show-sql: true  # 打印sql
+    properties:
+      hibernate:
+        hbm2ddl:
+          auto: create  # 自动更新表结构
+        format_sql: true  # 格式化sql
+        dialect: org.hibernate.dialect.MySQL5InnoDBDialect  # 数据库方言
+    database: mysql # 数据库类型
+    hibernate:
+      naming:
+        # 取消驼峰转下划线
+        implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+logging:
+  level:
+    org.hibernate.SQL: DEBUG  # ??sql??
+    org.hibernate.type: TRACE  # ????
